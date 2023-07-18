@@ -1,8 +1,9 @@
 ﻿using System.Threading.Tasks;
 using RestSharp;
 
-namespace Exam
+namespace Exam.Utility
 {
+    //I would discuss the name of the class for the API with the command.
     public static class API_TokenCreator
     {
         private const string RequestTokenHead = "token/get";

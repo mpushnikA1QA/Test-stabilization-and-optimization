@@ -44,10 +44,10 @@
     <Compile Update="DataModels\TestData.cs">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Compile>
-    <Compile Update="Forms\NewProjectForm.cs">
+    <Compile Update="Pages\Forms\NewProjectForm.cs">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Compile>
-    <Compile Update="Forms\NewTestForm.cs">
+    <Compile Update="Pages\Forms\NewTestForm.cs">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Compile>
     <Compile Update="Models\TestModel.cs">
