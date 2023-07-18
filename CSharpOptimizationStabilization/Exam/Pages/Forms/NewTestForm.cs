@@ -1,16 +1,15 @@
 ﻿using Aquality.Selenium.Elements.Interfaces;
 using Aquality.Selenium.Forms;
+using Exam.DataModels;
 using OpenQA.Selenium;
 
-namespace Exam
+//The correct namespace name must be specified where each file is located.
+//Fix similar cases in other places.
+namespace Exam.Pages.Forms
 {
     public class NewTestForm : Form
     {
-        public NewTestForm() : base(By.Id("title"), "Add test")
-        {
-
-        }
-        public static TestModel TestModel = new();
+        //It is better to pass test data as a parameter to the class or to method. To make the logic more flexible.
         private ITextBox TestNameTextBox => ElementFactory.GetTextBox(By.Id("testName"), "New test name");
         private ITextBox TestMethodTextBox => ElementFactory.GetTextBox(By.Id("testMethod"), "New test method");
         private ITextBox EnvironmentTextBox => ElementFactory.GetTextBox(By.Id("environment"), "New test env");
@@ -21,34 +20,49 @@ namespace Exam
         protected internal IButton SaveTestButton => ElementFactory.GetButton(By.XPath("//form[@id='addTestForm']/button[contains(@class,'primary')]"), "Save test");
         private ILabel TestSavedLabel => ElementFactory.GetLabel(By.Id("success"), "Test saved");
 
-        public void FillTestNameField()
+        public NewTestForm() : base(By.Id("title"), "Add test")
         {
-            TestNameTextBox.ClearAndType(TestModel.TestName);
+
         }
 
-        public void FillTestMethodField()
+        public void FillAllTestData(TestModel testModel)
         {
-            TestMethodTextBox.ClearAndType(TestModel.TestMethod);
+            FillTestNameField(testModel.TestName);
+            FillTestMethodField(testModel.TestMethod);
+            FillEnvironmentField(testModel.Environment);
+            FillBrowserField(testModel.Browser);
+            FillStartTimeField(testModel.StartTime);
+            FillEndTimeField(testModel.EndTime);
         }
 
-        public void FillEnvironmentField()
+        public void FillTestNameField(string testName)
         {
-            EnvironmentTextBox.ClearAndType(TestModel.Environment);
+            TestNameTextBox.ClearAndType(testName);
         }
 
-        public void FillBrowserField()
+        public void FillTestMethodField(string testMethod)
         {
-            BrowserTextBox.ClearAndType(TestModel.Browser);
+            TestMethodTextBox.ClearAndType(testMethod);
         }
 
-        public void FillStartTimeField()
+        public void FillEnvironmentField(string environment)
         {
-            StartTimeTextBox.ClearAndType(TestModel.StartTime);
+            EnvironmentTextBox.ClearAndType(environment);
         }
 
-        public void FillEndTimeField()
+        public void FillBrowserField(string browser)
         {
-            EndTimeTextBox.ClearAndType(TestModel.EndTime);
+            BrowserTextBox.ClearAndType(browser);
+        }
+
+        public void FillStartTimeField(string startTime)
+        {
+            StartTimeTextBox.ClearAndType(startTime);
+        }
+
+        public void FillEndTimeField(string endTime)
+        {
+            EndTimeTextBox.ClearAndType(endTime);
         }
 
         public void UploadScreenshot(string path)

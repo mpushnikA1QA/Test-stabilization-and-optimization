@@ -6,6 +6,7 @@ namespace Exam
 {
     public class TestData
     {
+        //Since the data is used once, you can leave it as it is.
         private static ISettingsFile ConfFile => new JsonSettingsFile(@"Resources.TestData.json", Assembly.GetCallingAssembly());
 
         public string Variant => ConfFile.GetValue<string>("Variant");
